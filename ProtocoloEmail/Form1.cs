@@ -82,6 +82,77 @@ namespace ProtocoloEmail
             return vDataFormatada;
         }
 
+        private string EnviaHeader(string prEmailRemetente, string prEmailDestinatario)
+        {
+            string vResult = "";
+
+            vResult += "Snd: DATA\r\n";
+
+            vResult += "Rcv: 353 End data with <CR><LF> <CR><LF>\r\n";
+
+            vResult += "Snd: From: " + prEmailRemetente + "\r\n";
+            vResult += "Snd: To: " + prEmailDestinatario + "\r\n";
+
+            string vDataEnvio = FormatarData(DateTime.Now);
+
+            vResult += "Snd: Date: " + vDataEnvio + "\r\n";
+
+            return vResult;
+        }
+
+        private string EnviaBody(string prAssunto, string prMensagem)
+        {
+            string vResult = "";
+
+            vResult += "Snd: Subject: " + prAssunto + "\r\n";
+            vResult += "Snd: \r\n";
+
+            vResult += "Snd: " + prMensagem + "\r\n";
+
+            Random vNumeroAleatorio = new Random();
+            int vNumeroFila = vNumeroAleatorio.Next(1, 10000);
+
+            vResult += "Rcv: 250 Ok: queued at " + vNumeroFila + "\r\n";
+
+            vResult += "Snd: QUITS\r\n";
+
+            vResult += "Rcv: 221 Bye\r\n";
+            vResult += "{The server closes the connection}";
+
+            return vResult;
+        }
+
+        private void EnviarEmail(string prEmailRemetente, string prEmailDestinatario, string prAssunto, string prMensagem, string vSenha)
+        {
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress(prEmailRemetente);
+            mail.Subject = prAssunto;
+            mail.Body = prMensagem;
+
+            mail.To.Add(prEmailDestinatario);
+
+            using (var smtp = new SmtpClient("smtp.gmail.com", 587))
+            {
+                smtp.Credentials = new NetworkCredential(prEmailRemetente, vSenha);
+
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+
+                //ENVIO DO EMAIL
+                try
+                {
+                    smtp.Send(mail);
+
+                    MessageBox.Show("E-mail Enviado com sucesso!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Falha ao enviar e-mail");
+                }
+            }
+        }
+
         private void BotaoEnviar_Click(object sender, EventArgs e)
         {
             //ALIMENTANDO VARIAVEIS COM OS CAMPOS DO TEXT BOX
@@ -159,65 +230,18 @@ namespace ProtocoloEmail
                 TextBoxRequisicoes.Text += "Rcv: 250 OK!\r\n";
             }
 
-            //DADOS DO EMAIL
-            TextBoxRequisicoes.Text += "Snd: DATA\r\n";
+            //ENVIA O CABEÇALHO DA REQUISICAO
+            TextBoxRequisicoes.Text += EnviaHeader(vEmailRemetente, vEmailDestinatario);
 
-            TextBoxRequisicoes.Text += "Rcv: 353 End data with <CR><LF> <CR><LF>\r\n";
-
-            TextBoxRequisicoes.Text += "Snd: From: " + vEmailRemetente + "\r\n";
-            TextBoxRequisicoes.Text += "Snd: To: " + vEmailDestinatario + "\r\n";
-
-            string vDataEnvio = FormatarData(DateTime.Now);
-
-            TextBoxRequisicoes.Text += "Snd: Date: " + vDataEnvio + "\r\n";
-
-            TextBoxRequisicoes.Text += "Snd: Subject: " + vAssunto + "\r\n";
-            TextBoxRequisicoes.Text += "Snd: \r\n";
-
-            TextBoxRequisicoes.Text += "Snd: " + vMensagem + "\r\n";
-
-            Random vNumeroAleatorio = new Random();
-            int vNumeroFila = vNumeroAleatorio.Next(1, 10000);
-
-            TextBoxRequisicoes.Text += "Rcv: 250 Ok: queued at " + vNumeroFila + "\r\n";
-
-            TextBoxRequisicoes.Text += "Snd: QUITS\r\n";
-
-            TextBoxRequisicoes.Text += "Rcv: 221 Bye\r\n";
-            TextBoxRequisicoes.Text += "{The server closes the connection}";
+            //ENVIA O CORPO DA REQUISICAO
+            TextBoxRequisicoes.Text += EnviaBody(vAssunto, vMensagem);
 
             bool vEhEnviarEmail = checkBoxEnviarEmail.Checked;
 
+            //FAZ A REQUISIÇÃO SMTP DE FORMA REAL PARA O SERVIDOR
             if (vEhEnviarEmail)
             {
-                //MONTAGEM DO EMAIL
-                MailMessage mail = new MailMessage();
-
-                mail.From = new MailAddress(vEmailRemetente);
-                mail.Subject = vAssunto;
-                mail.Body = vMensagem;
-
-                mail.To.Add(vEmailDestinatario);
-
-                using (var smtp = new SmtpClient("smtp.gmail.com", 587))
-                {
-                    smtp.Credentials = new NetworkCredential(vEmailRemetente, vSenha);
-
-                    smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = false;
-
-                    //ENVIO DO EMAIL
-                    try
-                    {
-                        smtp.Send(mail);
-
-                        MessageBox.Show("E-mail Enviado com sucesso!");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Falha ao enviar e-mail");
-                    }
-                }
+                EnviarEmail(vEmailRemetente, vEmailDestinatario, vAssunto, vMensagem, vSenha);
             }
         }
 
@@ -228,4 +252,4 @@ namespace ProtocoloEmail
             TextBoxRequisicoes.ScrollToCaret();
         }
     }
-}A
+}
