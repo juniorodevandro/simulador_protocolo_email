@@ -40,3 +40,15 @@ C:\Users\Escalasoft\Desktop\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debu
 C:\Users\Escalasoft\Desktop\SimuladorProtocoloEmail-main\ProtocoloEmail\bin\Debug\ProtocoloEmail.exe.config
 C:\Users\Escalasoft\Desktop\SimuladorProtocoloEmail-main\ProtocoloEmail\bin\Debug\ProtocoloEmail.exe
 C:\Users\Escalasoft\Desktop\SimuladorProtocoloEmail-main\ProtocoloEmail\bin\Debug\ProtocoloEmail.pdb
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\bin\Debug\ProtocoloEmail.exe.config
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\bin\Debug\ProtocoloEmail.exe
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\bin\Debug\ProtocoloEmail.pdb
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.csproj.AssemblyReference.cache
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.csproj.SuggestedBindingRedirects.cache
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.email.resources
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.Properties.Resources.resources
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.csproj.GenerateResource.cache
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.csproj.CoreCompileInputs.cache
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.exe
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.pdb
+C:\Users\Junior\Downloads\SimuladorProtocoloEmail-main\ProtocoloEmail\obj\Debug\ProtocoloEmail.uFormInformacao.resources

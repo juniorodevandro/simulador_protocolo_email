@@ -245,11 +245,23 @@ namespace ProtocoloEmail
             }
         }
 
+        // MANTÉM O SCROLL SEMPRE PARA BAIXO
         private void TextBoxRequisicoes_TextChanged(object sender, EventArgs e)
         {
             TextBoxRequisicoes.SelectionStart = TextBoxRequisicoes.Text.Length;
 
             TextBoxRequisicoes.ScrollToCaret();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void instruçõesDeUsoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            uFormInformacao vForm = new uFormInformacao();
+            vForm.Show();
         }
     }
 }

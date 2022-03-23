@@ -47,7 +47,12 @@
             this.LabelRequisicoes = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.uMenu = new System.Windows.Forms.MenuStrip();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.instruçõesDeUsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
+            this.uMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -83,7 +88,7 @@
             this.checkBoxEnviarEmail.Location = new System.Drawing.Point(29, 254);
             this.checkBoxEnviarEmail.Name = "checkBoxEnviarEmail";
             this.checkBoxEnviarEmail.Size = new System.Drawing.Size(337, 24);
-            this.checkBoxEnviarEmail.TabIndex = 12;
+            this.checkBoxEnviarEmail.TabIndex = 5;
             this.checkBoxEnviarEmail.Text = "Enviar o e-mail de forma real ao destinatário";
             this.checkBoxEnviarEmail.UseVisualStyleBackColor = true;
             // 
@@ -94,7 +99,7 @@
             this.TextBoxEmailDest.Location = new System.Drawing.Point(9, 160);
             this.TextBoxEmailDest.Name = "TextBoxEmailDest";
             this.TextBoxEmailDest.Size = new System.Drawing.Size(385, 20);
-            this.TextBoxEmailDest.TabIndex = 11;
+            this.TextBoxEmailDest.TabIndex = 3;
             // 
             // TextBoxSenha
             // 
@@ -103,7 +108,7 @@
             this.TextBoxSenha.Location = new System.Drawing.Point(6, 105);
             this.TextBoxSenha.Name = "TextBoxSenha";
             this.TextBoxSenha.Size = new System.Drawing.Size(385, 20);
-            this.TextBoxSenha.TabIndex = 11;
+            this.TextBoxSenha.TabIndex = 2;
             this.TextBoxSenha.UseSystemPasswordChar = true;
             // 
             // LabelEmailDest
@@ -125,7 +130,7 @@
             this.BotaoEnviar.Location = new System.Drawing.Point(128, 511);
             this.BotaoEnviar.Name = "BotaoEnviar";
             this.BotaoEnviar.Size = new System.Drawing.Size(135, 41);
-            this.BotaoEnviar.TabIndex = 9;
+            this.BotaoEnviar.TabIndex = 99;
             this.BotaoEnviar.Text = "Enviar";
             this.BotaoEnviar.UseVisualStyleBackColor = false;
             this.BotaoEnviar.Click += new System.EventHandler(this.BotaoEnviar_Click);
@@ -161,7 +166,7 @@
             this.TextBoxMensagem.Name = "TextBoxMensagem";
             this.TextBoxMensagem.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TextBoxMensagem.Size = new System.Drawing.Size(385, 189);
-            this.TextBoxMensagem.TabIndex = 7;
+            this.TextBoxMensagem.TabIndex = 6;
             // 
             // TextBoxAssunto
             // 
@@ -170,7 +175,7 @@
             this.TextBoxAssunto.Location = new System.Drawing.Point(6, 215);
             this.TextBoxAssunto.Name = "TextBoxAssunto";
             this.TextBoxAssunto.Size = new System.Drawing.Size(385, 20);
-            this.TextBoxAssunto.TabIndex = 3;
+            this.TextBoxAssunto.TabIndex = 4;
             // 
             // LabelAssunto
             // 
@@ -225,7 +230,8 @@
             this.TextBoxRequisicoes.ReadOnly = true;
             this.TextBoxRequisicoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TextBoxRequisicoes.Size = new System.Drawing.Size(452, 551);
-            this.TextBoxRequisicoes.TabIndex = 4;
+            this.TextBoxRequisicoes.TabIndex = 99999;
+            this.TextBoxRequisicoes.TabStop = false;
             this.TextBoxRequisicoes.TextChanged += new System.EventHandler(this.TextBoxRequisicoes_TextChanged);
             // 
             // LabelRequisicoes
@@ -261,6 +267,39 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Rcv: Receiver";
             // 
+            // uMenu
+            // 
+            this.uMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajudaToolStripMenuItem,
+            this.sairToolStripMenuItem});
+            this.uMenu.Location = new System.Drawing.Point(0, 0);
+            this.uMenu.Name = "uMenu";
+            this.uMenu.Size = new System.Drawing.Size(943, 24);
+            this.uMenu.TabIndex = 15;
+            this.uMenu.Text = "menuStrip1";
+            // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.instruçõesDeUsoToolStripMenuItem});
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            // 
+            // instruçõesDeUsoToolStripMenuItem
+            // 
+            this.instruçõesDeUsoToolStripMenuItem.Name = "instruçõesDeUsoToolStripMenuItem";
+            this.instruçõesDeUsoToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.instruçõesDeUsoToolStripMenuItem.Text = "Instruções de uso";
+            this.instruçõesDeUsoToolStripMenuItem.Click += new System.EventHandler(this.instruçõesDeUsoToolStripMenuItem_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
             // email
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,16 +313,21 @@
             this.Controls.Add(this.TextBoxRequisicoes);
             this.Controls.Add(this.Remetente);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.uMenu);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.uMenu;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "email";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-mail";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.uMenu.ResumeLayout(false);
+            this.uMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,6 +353,10 @@
         private System.Windows.Forms.CheckBox checkBoxEnviarEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip uMenu;
+        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem instruçõesDeUsoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }
 
